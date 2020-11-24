@@ -5,19 +5,18 @@ console.log('starting note.js')
 
 const addNote = (tittle, body) => {
     
-    //const duplicatesNotes = notes.filter((e) => e.tittle=== tittle)
+    const notes = loadNotes()
+    const findDuplicate = notes.find((e) => e.tittle === tittle)
 
-    const findDuplicate = notes.find((e) => e.ttitle === tittle)
-    
     if(!findDuplicate){
-        notes.push({
+        notes.push({  
             tittle: tittle,
             body: body
         })
         saveNotes(notes)
-        console.log('new note added')
+        console.log(chalk.green.inverse('new note added'))
     }else {
-        console.log('Note tittle taken')
+        console.log(chalk.red.inverse('Note tittle is taken'))
     }
 }
 
