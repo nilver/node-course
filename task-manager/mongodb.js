@@ -29,7 +29,7 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     
      // task
      // findOne 
-    db.collection('task').findOne({_id: new ObjectID("5fc3c72e81a9613c7079b8d6")}, (error, task) =>{
+ /*    db.collection('task').findOne({_id: new ObjectID("5fc3c72e81a9613c7079b8d6")}, (error, task) =>{
         if (error){
             console.log('Unable to fetch task by id')
         }
@@ -41,8 +41,49 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
             return console.log('Unable to fetch task')
         }
         console.log(users)
+    }) */
+    // updade 
+
+    /* db.collection('users').updateOne({
+        _id: new ObjectID("5fc3c01d9a6b9832fc5e9d11") 
+    },{
+        $inc: {
+            age: 5
+        }
+    }).then((result) =>{
+        console.log(result)
+    }).catch((error) =>{
+        console.log(error)
     })
+ *//* 
 
-    
+    db.collection('task').updateMany({
+        completed: false
+    },{
+        $set:{
+            completed: true
+        }
+    }).then((result) =>{
+        console.log(result)
+    }).catch((error) => {
+        console.log(error)
+    })
+     */
+     // delete many
+     /* db.collection('users').deleteMany({age: 44})
+    .then((result) => {
+        console.log(result)
+    }).catch((error) => {
+        console.log(error)
+    }) */
 
+    // delete many
+    db.collection('task').deleteOne({
+        description: 'Shopping shoes'
+    }).then((result) => {
+        console.log(result)
+    })
+    .catch((error) => {
+        console.log(error)
+    })
 }) 
